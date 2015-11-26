@@ -3,5 +3,5 @@ mixin decision(decisions)
         img(src="/images/decision.jpg")
         div
             each d in decisions
-                p #{d.text} #[a(href="" ng-click="goToPage(#{d.page})") rendez-vous au #{d.page}]
+                p #{d.text} #[a(href="#{d.page}") rendez-vous au #{d.page}]
 

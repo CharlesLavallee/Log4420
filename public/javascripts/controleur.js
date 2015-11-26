@@ -93,20 +93,3 @@ monApp.controller('ControleurPartieEnCours', function($scope, $http) {
     };
 });
 
-
-monApp.controller('ControleurHistoire', function($scope, $http) { 
-    $scope.histoire = "";
-    $scope.goToPage = function(pageId){
-        $http.get('/jeu/' + pageId).then(
-            function(res) {
-                $scope.histoire = res.data;
-                console.log($scope.histoire);
-            },
-            function(res){
-                console.log("erreur lors de la récupération de la page");
-            }
-        );
-    };
-});
-
-
