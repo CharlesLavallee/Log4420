@@ -1,0 +1,51 @@
+extends layout
+
+block head
+    link(rel="stylesheet", href="/stylesheets/creationJoueur.css")
+
+block content
+    img(src="/images/loup_solitaire.png")
+
+    section(ng-controller="ControleurHistoire as ctrlH")
+        h1 Création du personnage
+
+        fieldset(ng-controller="ControleurPartieEnCours as ctrl")
+            legend Parties en cours
+            div(class="partieEnCours" ng-repeat="partie in partiesCourantes")
+                a(class="partieEnCours" href="/jeu/{{partie.pageCourante}}")                           
+                    {{partie.nomJoueur}}                           
+                input(class="partieEnCours" type="button" value="Supprimer!" name="supprimerPartie" ng-click="supprimerPartie(partie.id)")
+
+        div#erreurs
+            ul
+                each e in erreursMsg
+                    li=e
+
+        form(action="" ng-click="goToPage(1)" method="post")   
+            fieldset
+                legend Informations du personnage
+                div
+                    label
+                        | Nom du personnage: 
+                        input(type="text" name="nomJoueur")
+                        
+
+            fieldset
+                legend Disciplines
+                p Choisir 5 disciplines:
+                div
+                    label(ng-repeat="d in discipline")
+                        input(type="checkbox" name="discipline" value="{{d.value}}" ng-model="d.selected")
+                        | {{d.label}}
+
+            fieldset
+                legend Équipement
+                p Choisir 2 items:
+                div
+                    label(ng-repeat="o in objets")
+                        input(type="checkbox" name="{{o.name}}" value="{{o.value}}" ng-model="o.selected")
+                        | {{o.label}}
+
+            input.button(type="submit" value="Commencer la partie!" ng-disabled="!validateForm()")
+
+

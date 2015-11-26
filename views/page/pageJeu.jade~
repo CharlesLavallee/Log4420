@@ -1,0 +1,15 @@
+extends ../layout
+
+block head
+    link(rel="stylesheet", href="/stylesheets/pageJeu.css")
+
+block content
+    main(ng-controller="ControleurHistoire as ctrlH")
+        div#title
+            img(src="/images/pageTitre.png")
+            p#numeroPage= numeroPage
+
+        section#histoire(ng-include="histoire")           
+            !{htmlPage}
+
+        include ./stats.jade

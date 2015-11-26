@@ -1,0 +1,25 @@
+doctype html
+html(ng-app="monApp")
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/globale.css')
+    script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.min.js")
+    script(src="/javascripts/controleur.js")
+
+    block head
+  body(ng-controller="Controleur as ctrl")
+    nav
+        ul
+            li
+                a#accueil(href="/") Accueil
+            li
+                a#creationJoueur(href="/creationJoueur") Jeu
+            li
+                a#reglesJeu(href="/aide") Règles du jeu
+
+    block content
+
+    footer
+        p Les Grottes de Kalte - Lone Wolf
+        p Utilisé pour LOG4420 par Konstantinos Lambrou-Latreille
+
